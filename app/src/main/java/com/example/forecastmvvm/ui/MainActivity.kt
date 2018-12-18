@@ -7,7 +7,6 @@ import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupWithNavController
 import com.example.forecastmvvm.R
-import com.example.forecastmvvm.R.layout.activity_main
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -16,7 +15,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(activity_main)
+        setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
 
         navController = Navigation.findNavController(this, R.id.nav_host_fragment)
