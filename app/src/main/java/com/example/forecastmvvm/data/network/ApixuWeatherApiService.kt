@@ -14,7 +14,6 @@ import retrofit2.http.Query
 const val API_KEY = "e3b4ae74af25401a849181235180512"
 
 //http://api.apixu.com/v1/current.json?key=89e8bd89085b41b7a4b142029180210&q=London&lang=en
-//http://api.apixu.com/v1/current.json?key=e3b4ae74af25401a849181235180512&q=London&lang=en
 
 interface ApixuWeatherApiService {
 
