@@ -1,9 +1,11 @@
 package com.example.forecastmvvm.ui
 
-import android.Manifest.permission.ACCESS_COARSE_LOCATION
+import android.content.pm.PackageManager
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI
@@ -48,17 +50,54 @@ class MainActivity : AppCompatActivity(), KodeinAware {
 
         requestLocationPermission()
 
+        if (hasLocationPermission()) {
+            bindLocationManager()
+        } else
+            requestLocationPermission()
+
     }
 
-    private fun requestLocationPermission() {
-        ActivityCompat.requestPermissions(
+    private fun bindLocationManager() {
+        LifecycleBoundLocationManager(
             this,
-            arrayOf(ACCESS_COARSE_LOCATION),
-            MY_PERMISSION_ACCESS_COARSE_LOCATION
+            fusedLocationProviderClient, locationCallback
         )
+
+    }
+
+    private fun hasLocationPermission(): Boolean {
+        return ContextCompat.checkSelfPermission(
+            this,
+            android.Manifest.permission.ACCESS_COARSE_LOCATION
+        ) == PackageManager.PERMISSION_GRANTED
+
     }
 
     override fun onSupportNavigateUp(): Boolean {
         return NavigationUI.navigateUp(null, navController)
     }
+
+    private fun requestLocationPermission() {
+        ActivityCompat.requestPermissions(
+            this,
+            arrayOf(android.Manifest.permission.ACCESS_COARSE_LOCATION),
+            MY_PERMISSION_ACCESS_COARSE_LOCATION
+        )
+    }
+
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        if (requestCode == MY_PERMISSION_ACCESS_COARSE_LOCATION) {
+            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED)
+                bindLocationManager()
+            else
+                Toast.makeText(this, "Please, set location manualy in settings", Toast.LENGTH_LONG).show()
+        }
+    }
+
+
 }

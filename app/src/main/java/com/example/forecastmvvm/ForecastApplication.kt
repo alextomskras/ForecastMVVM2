@@ -12,9 +12,9 @@ import com.example.forecastmvvm.data.provider.UnitProviderImpl
 import com.example.forecastmvvm.data.repository.ForecastRepository
 import com.example.forecastmvvm.data.repository.ForecastRepositoryImpl
 import com.example.forecastmvvm.ui.weather.current.CurrentWeatherViewModelFactory
-import com.google.android.gms.location.LocationServices
+import com.google.android.gms.location.LocationServices.getFusedLocationProviderClient
 import com.jakewharton.threetenabp.AndroidThreeTen
-import org.kodein.di.Kodein
+import org.kodein.di.Kodein.Companion.lazy
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.x.androidXModule
 import org.kodein.di.generic.bind
@@ -24,7 +24,7 @@ import org.kodein.di.generic.singleton
 
 
 class ForecastApplication : Application(), KodeinAware {
-    override val kodein = Kodein.lazy {
+    override val kodein = lazy {
         import(androidXModule(this@ForecastApplication))
 
         bind() from singleton { ForecastDatabase(instance()) }
@@ -33,7 +33,7 @@ class ForecastApplication : Application(), KodeinAware {
         bind<ConnectivityInterceptor>() with singleton { ConnectivityInterceptorImpl(instance()) }
         bind() from singleton { ApixuWeatherApiService(instance()) }
         bind<WeatherNetworkDataSource>() with singleton { WeatherNetworkDataSourceImpl(instance()) }
-        bind() from provider { LocationServices.getFusedLocationProviderClient(instance<Context>()) }
+        bind() from provider { getFusedLocationProviderClient(instance<Context>()) }
         bind<LocationProvider>() with singleton { LocationProviderImpl(instance(), instance()) }
         bind<ForecastRepository>() with singleton { ForecastRepositoryImpl(instance(), instance(), instance(), instance()) }
         bind<UnitProvider>() with singleton { UnitProviderImpl(instance()) }
