@@ -11,7 +11,7 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 
-const val API_KEY = "89e8bd89085b41b7a4b142029180210"
+const val API_KEY = "e3b4ae74af25401a849181235180512"
 
 //http://api.apixu.com/v1/current.json?key=89e8bd89085b41b7a4b142029180210&q=London&lang=en
 
