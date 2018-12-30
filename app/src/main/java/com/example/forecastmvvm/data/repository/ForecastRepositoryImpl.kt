@@ -1,5 +1,6 @@
 package com.example.forecastmvvm.data.repository
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import com.example.forecastmvvm.data.db.CurrentWeatherDao
 import com.example.forecastmvvm.data.db.WeatherLocationDao
@@ -16,15 +17,18 @@ import org.threeten.bp.ZonedDateTime
 import java.util.*
 
 class ForecastRepositoryImpl(
+
+
     private val currentWeatherDao: CurrentWeatherDao,
     private val weatherLocationDao: WeatherLocationDao,
     private val weatherNetworkDataSource: WeatherNetworkDataSource,
     private val locationProvider: LocationProvider
     ) : ForecastRepository {
-
+    private val TAG = "ChatLog"
     init {
         weatherNetworkDataSource.downloadedCurrentWeather.observeForever { newCurrentWeather ->
             persistFetchedCurrentWeather(newCurrentWeather)
+            Log.d("forecast", "1111111")
         }
     }
 
@@ -33,6 +37,7 @@ class ForecastRepositoryImpl(
             initWeatherData()
             return@withContext if (metric) currentWeatherDao.getWeatherMetric()
             else currentWeatherDao.getWeatherImperial()
+
         }
     }
 

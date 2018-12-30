@@ -1,6 +1,7 @@
 package com.example.forecastmvvm.ui
 
 import android.annotation.SuppressLint
+import android.util.Log
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.LifecycleOwner
@@ -9,11 +10,13 @@ import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationCallback
 import com.google.android.gms.location.LocationRequest
 
+val TAG = "LocationManager"
 class LifecycleBoundLocationManager(
     lifecycleOwner: LifecycleOwner,
     private val fusedLocationProviderClient: FusedLocationProviderClient,
     private val locationCallback: LocationCallback
 ) : LifecycleObserver {
+
     init {
         lifecycleOwner.lifecycle.addObserver(this)
     }
@@ -21,7 +24,8 @@ class LifecycleBoundLocationManager(
     private val locationRequest = LocationRequest().apply {
         interval = 5000
         fastestInterval = 5000
-        priority = LocationRequest.PRIORITY_BALANCED_POWER_ACCURACY
+        priority = LocationRequest.PRIORITY_HIGH_ACCURACY
+        Log.d(TAG, "priority =" + priority.toString())
     }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_RESUME)
@@ -34,5 +38,4 @@ class LifecycleBoundLocationManager(
     fun removeLocationUpdates() {
         fusedLocationProviderClient.removeLocationUpdates(locationCallback)
     }
-
 }
