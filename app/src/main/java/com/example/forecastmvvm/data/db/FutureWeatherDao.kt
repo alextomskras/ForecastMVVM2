@@ -1,6 +1,7 @@
 package com.example.forecastmvvm.data.db
 
 import androidx.lifecycle.LiveData
+import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
@@ -9,7 +10,7 @@ import com.example.forecastmvvm.data.db.unitlocalized.future.ImperialSimpleFutur
 import com.example.forecastmvvm.data.db.unitlocalized.future.MetricSimpleFutureWeatherEntry
 import org.threeten.bp.LocalDate
 
-
+@Dao
 interface FutureWeatherDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(futureWeatherEntries: List<FutureWeatherEntry>)
