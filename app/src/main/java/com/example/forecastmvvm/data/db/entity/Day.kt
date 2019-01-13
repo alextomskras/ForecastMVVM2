@@ -9,9 +9,9 @@ data class Day(
     @SerializedName("avgtemp_f")
     val avgtempF: Double,
     @SerializedName("avgvis_km")
-    val avgvisKm: Int,
+    val avgvisKm: Double,
     @SerializedName("avgvis_miles")
-    val avgvisMiles: Int,
+    val avgvisMiles: Double,
     @Embedded(prefix = "condition_")
     val condition: Condition,
     @SerializedName("maxtemp_c")
