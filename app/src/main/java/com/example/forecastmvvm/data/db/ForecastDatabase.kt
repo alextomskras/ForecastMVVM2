@@ -11,7 +11,7 @@ import com.example.forecastmvvm.data.db.entity.WeatherLocation
 
 
 @Database(
-    entities = [CurrentWeatherEntry::class, WeatherLocation::class, FutureWeatherEntry::class],
+    entities = [CurrentWeatherEntry::class, FutureWeatherEntry::class, WeatherLocation::class],
     version = 1
 )
 @TypeConverters(LocalDateConverter::class)
