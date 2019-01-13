@@ -27,8 +27,8 @@ data class Day(
     @SerializedName("mintemp_f")
     val mintempF: Double,
     @SerializedName("totalprecip_in")
-    val totalprecipIn: Int,
+    val totalprecipIn: Double,
     @SerializedName("totalprecip_mm")
-    val totalprecipMm: Int,
+    val totalprecipMm: Double,
     val uv: Double
 )
