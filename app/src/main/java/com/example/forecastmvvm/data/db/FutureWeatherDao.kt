@@ -26,4 +26,5 @@ interface FutureWeatherDao {
 
     @Query("delete from future_weather where date(date) < date(:firstDateToKeep)")
     fun deleteOldEntries(firstDateToKeep: LocalDate)
+    
 }
