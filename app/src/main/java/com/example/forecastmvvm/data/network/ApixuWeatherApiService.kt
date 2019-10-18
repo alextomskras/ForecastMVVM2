@@ -1,7 +1,8 @@
 package com.example.forecastmvvm.data.network
 
-import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
+//import sun.util.logging.LoggingSupport.setLevel
 import com.example.forecastmvvm.data.network.response.CurrentWeatherResponse
+import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import kotlinx.coroutines.Deferred
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
@@ -11,8 +12,9 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 
-const val API_KEY = "e3b4ae74af25401a849181235180512"
-
+//OLD-const val API_KEY = "e3b4ae74af25401a849181235180512"
+const val API_KEY = "3e735f3d35d2f20f7604151dd0742757"
+//API-KEY-NEW 3e735f3d35d2f20f7604151dd0742757
 //http://api.apixu.com/v1/current.json?key=89e8bd89085b41b7a4b142029180210&q=London&lang=en
 //http://api.apixu.com/v1/current.json?key=e3b4ae74af25401a849181235180512&q=London&lang=en
 
@@ -43,8 +45,12 @@ interface ApixuWeatherApiService {
                 return@Interceptor chain.proceed(request)
             }
 
+//            val logging = HttpLoggingInterceptor()
+//            logging.level = HttpLoggingInterceptor.Level.BASIC
+
             val okHttpClient = OkHttpClient.Builder()
                 .addInterceptor(requestInterceptor)
+//                .addInterceptor(logging)
                 .addInterceptor(connectivityInterceptor)
                 .build()
 
