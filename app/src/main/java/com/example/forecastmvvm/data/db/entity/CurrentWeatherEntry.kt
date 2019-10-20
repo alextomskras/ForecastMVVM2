@@ -8,7 +8,7 @@ import com.google.gson.annotations.SerializedName
 const val CURRENT_WEATHER_ID = 0
 
 @Entity(tableName = "main_weather")
-data class Main(
+data class CurrentWeatherEntry(
     val temp: Double,
     @SerializedName("temp_min")
     val tempMin: Double,
