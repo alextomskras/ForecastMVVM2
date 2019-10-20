@@ -34,12 +34,16 @@ interface ApixuWeatherApiService {
     fun getCurrentWeather(
         @Query("q") location: String,
         @Query("lang") languageCode: String = "en"
+//        @Query("units") units: String = "metric"
+
     ): Deferred<CurrentWeatherResponse>
 
     companion object {
         operator fun invoke(
             connectivityInterceptor: ConnectivityInterceptor
         ): ApixuWeatherApiService {
+//            val logging = HttpLoggingInterceptor()
+//            logging.level = HttpLoggingInterceptor.Level.BASIC
             val requestInterceptor = Interceptor { chain ->
 
                 val url = chain.request()
@@ -55,8 +59,7 @@ interface ApixuWeatherApiService {
                 return@Interceptor chain.proceed(request)
             }
 
-//            val logging = HttpLoggingInterceptor()
-//            logging.level = HttpLoggingInterceptor.Level.BASIC
+
 
             val okHttpClient = OkHttpClient.Builder()
                 .addInterceptor(requestInterceptor)
@@ -66,7 +69,7 @@ interface ApixuWeatherApiService {
 
             return Retrofit.Builder()
                 .client(okHttpClient)
-                .baseUrl("http://api.weatherstack.com/")
+                .baseUrl("https://api.openweathermap.org/")
                 .addCallAdapterFactory(CoroutineCallAdapterFactory())
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
