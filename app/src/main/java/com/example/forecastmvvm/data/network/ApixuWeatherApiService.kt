@@ -32,7 +32,7 @@ interface ApixuWeatherApiService {
 
     @GET("data/2.5/forecast")
     fun getCurrentWeather(
-        @Query("query") location: String,
+        @Query("q") location: String,
         @Query("lang") languageCode: String = "en"
     ): Deferred<CurrentWeatherResponse>
 
