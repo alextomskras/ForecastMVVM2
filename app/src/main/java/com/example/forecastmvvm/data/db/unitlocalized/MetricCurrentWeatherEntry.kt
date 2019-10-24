@@ -4,7 +4,7 @@ import androidx.room.ColumnInfo
 
 
 data class MetricCurrentWeatherEntry(
-    @ColumnInfo(name = "main_temp")
+    @ColumnInfo(name = "city_idcity")
     override val temperature: Double
 //    @ColumnInfo(name = "condition_text")
 //    override val conditionText: String,

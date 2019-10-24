@@ -1,6 +1,7 @@
 package com.example.forecastmvvm.data.db.entity
 
 
+import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
@@ -13,7 +14,8 @@ data class City(
     val idcity: Int,
     @SerializedName("name")
     val name: String,
-    @SerializedName("coord")
+//    @SerializedName("coord")
+    @Embedded(prefix = "coord_")
     val coord: Coord,
     @SerializedName("country")
     val country: String,
