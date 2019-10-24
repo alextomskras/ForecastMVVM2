@@ -45,7 +45,8 @@ class ForecastRepositoryImpl(
     private suspend fun fetchCurrentWeather() {
         weatherNetworkDataSource.fetchCurrentWeather(
             "Moscow",
-            Locale.getDefault().language
+            Locale.getDefault().language,
+            "metric"
         )
     }
 

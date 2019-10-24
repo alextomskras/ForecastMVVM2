@@ -1,7 +1,11 @@
 package com.example.forecastmvvm.data.db.entity
 
 
+import com.google.gson.annotations.SerializedName
+
 data class Wind(
+    @SerializedName("speed")
     val speed: Double,
-    val deg: Double
+    @SerializedName("deg")
+    val deg: Int
 )

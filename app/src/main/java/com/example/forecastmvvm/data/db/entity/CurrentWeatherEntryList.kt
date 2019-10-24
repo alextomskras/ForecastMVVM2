@@ -5,12 +5,14 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
-//const val CURRENT_WEATHER_ID = 0
+const val CURRENT_WEATHER_ID = 0
 
 @Entity(tableName = "current_weather")
 data class CurrentWeatherEntryList(
     @SerializedName("name")
     val name: String,
+    @SerializedName("temp_c")
+    val tempC: Double,
     @SerializedName("temp_f")
     val tempF: Double,
     @SerializedName("is_day")
