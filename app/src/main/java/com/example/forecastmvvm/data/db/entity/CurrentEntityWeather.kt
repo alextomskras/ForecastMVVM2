@@ -1,10 +1,10 @@
 package com.example.forecastmvvm.data.db.entity
 
 
-import androidx.room.*
-import com.google.gson.Gson
+import androidx.room.Embedded
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
-import com.google.gson.reflect.TypeToken
 
 
 const val ENTITY_WEATHER_ID = 0
@@ -18,8 +18,8 @@ data class CurrentEntityWeather(
     @SerializedName("cnt")
     val cnt: Int,
 //    @Embedded(prefix = "list_")
-    @TypeConverters(ListConverter::class)
-    val list: List<X>,
+//    @TypeConverters(ListConverter::class)
+    var list: List<X>,
 //    @SerializedName("city")
     @Embedded(prefix = "city_")
     val city: City
@@ -28,19 +28,25 @@ data class CurrentEntityWeather(
     var id: Int = ENTITY_WEATHER_ID
 }
 
-class ListConverter {
-    private val gson = Gson()
-    private val type = object : TypeToken<List<X>>() {
-
-    }.type
-
-    @TypeConverter
-    fun stringToNestedData(json: String): List<X> {
-        return gson.fromJson(json, type)
-    }
-
-    @TypeConverter
-    fun nestedDataToString(nestedData: List<X>): String {
-        return gson.toJson(nestedData, type)
-    }
-}
+//class ListConverter {
+////    private val gson = Gson()
+////    private val type = object : TypeToken<MutableList<X>>() {
+////
+////    }.type
+//companion object{
+//    @TypeConverter
+////    @JvmStatic
+//    fun stringToNestedData(json: String?): MutableList<X> {
+////        return gson.fromJson(json, type)
+//        return MutableList<X>()
+//    }
+//
+//    @TypeConverter
+////    @JvmStatic
+//    fun nestedDataToString(nestedData: MutableList<X>): String {
+////        return gson.toJson(nestedData, type)
+//        return toString()
+//    }
+//}
+//
+//}
