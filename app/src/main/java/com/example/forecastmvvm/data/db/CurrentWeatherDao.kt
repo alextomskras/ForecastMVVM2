@@ -6,8 +6,8 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.example.forecastmvvm.data.db.entity.CurrentEntityWeather
-import com.example.forecastmvvm.data.db.entity.ENTITY_WEATHER_ID
+import com.example.forecastmvvm.data.db.entity.Forecast.CurrentEntityWeather
+import com.example.forecastmvvm.data.db.entity.Forecast.ENTITY_WEATHER_ID
 import com.example.forecastmvvm.data.db.unitlocalized.ImperialCurrentWeatherEntry
 import com.example.forecastmvvm.data.db.unitlocalized.MetricCurrentWeatherEntry
 

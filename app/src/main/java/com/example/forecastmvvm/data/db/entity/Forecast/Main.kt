@@ -1,4 +1,4 @@
-package com.example.forecastmvvm.data.db.entity
+package com.example.forecastmvvm.data.db.entity.Forecast
 
 
 import androidx.room.Entity

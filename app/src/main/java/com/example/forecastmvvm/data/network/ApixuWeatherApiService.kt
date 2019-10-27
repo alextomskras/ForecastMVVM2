@@ -20,7 +20,7 @@ const val API_KEY = "f9d142fda1995a149d1b35f11bc9a928"
 //WEATHER_ICON
 //DAY-CLEAR-SKY-http://openweathermap.org/img/wn/01d@2x.png
 
-
+//https://samples.openweathermap.org/data/2.5/weather?id=524901&appid=b1b15e88fa797225412429c1c50c122a1
 //https://api.openweathermap.org/data/2.5/forecast?q=London,us
 //https://samples.openweathermap.org/data/2.5/forecast?id=524901&appid=b1b15e88fa797225412429c1c50c122a1
 //http://api.weatherstack.com/current?access_key=3e735f3d35d2f20f7604151dd0742757&query=New%20York
@@ -47,7 +47,7 @@ interface ApixuWeatherApiService {
             val requestInterceptor = Interceptor { chain ->
 
                 val url = chain.request()
-                    .url()
+                    .url
                     .newBuilder()
                     .addQueryParameter("appid", API_KEY)
                     .build()
