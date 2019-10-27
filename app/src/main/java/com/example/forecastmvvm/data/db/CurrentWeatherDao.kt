@@ -15,7 +15,7 @@ import com.example.forecastmvvm.data.db.unitlocalized.MetricCurrentWeatherEntry
 @Dao
 interface CurrentWeatherDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun upsert(weatherEntryList: CurrentWeatherEntity)
+    fun upsert(weatherEntry: CurrentWeatherEntity)
 
     @Query("select * from Current_Entity_weather where id = $CURRENT_ENTITY_WEATHER_ID ")
     fun getWeatherMetric(): LiveData<MetricCurrentWeatherEntry>

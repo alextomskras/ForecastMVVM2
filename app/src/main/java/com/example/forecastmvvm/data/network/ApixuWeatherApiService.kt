@@ -61,7 +61,7 @@ interface ApixuWeatherApiService {
             }
 
             val logging = HttpLoggingInterceptor()
-            logging.level = HttpLoggingInterceptor.Level.BASIC
+            logging.level = HttpLoggingInterceptor.Level.BODY
 
             val okHttpClient = OkHttpClient.Builder()
                 .addInterceptor(requestInterceptor)
