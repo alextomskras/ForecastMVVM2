@@ -9,6 +9,9 @@ apply plugin: "kotlin-kapt"
 apply plugin: 'androidx.navigation.safeargs'
 
 android {
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.example.forecastmvvm"
