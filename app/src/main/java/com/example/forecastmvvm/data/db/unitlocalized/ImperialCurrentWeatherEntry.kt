@@ -4,7 +4,7 @@ import androidx.room.ColumnInfo
 
 
 data class ImperialCurrentWeatherEntry(
-    @ColumnInfo(name = "city_idcity")
+    @ColumnInfo(name = "main_temp")
     override val temperature: Double
 //    @ColumnInfo(name = "condition_text")
 //    override val conditionText: String,

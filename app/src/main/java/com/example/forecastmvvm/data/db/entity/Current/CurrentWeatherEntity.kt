@@ -31,7 +31,10 @@ data class CurrentWeatherEntity(
     val cid: Int, // 2172797
     val name: String, // Cairns
     val cod: Int // 200
-)
+) {
+    @PrimaryKey(autoGenerate = false)
+    var id: Int = CURRENT_ENTITY_WEATHER_ID
+}
 
 
     data class Coord(
@@ -67,12 +70,9 @@ data class CurrentWeatherEntity(
 
     data class Sys(
         val type: Int, // 1
-        val Sid: Int, // 8166
+        val id: Int, // 8166
         val message: Double, // 0.2064
         val country: String, // AU
         val sunrise: Int, // 1485720272
         val sunset: Int // 1485766550
-    ) {
-        @PrimaryKey(autoGenerate = false)
-        var id: Int = CURRENT_ENTITY_WEATHER_ID
-    }
+    )

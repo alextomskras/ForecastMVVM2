@@ -6,6 +6,7 @@ import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterF
 import kotlinx.coroutines.Deferred
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
@@ -30,7 +31,7 @@ const val API_KEY = "f9d142fda1995a149d1b35f11bc9a928"
 
 interface ApixuWeatherApiService {
 
-    @GET("data/2.5/forecast")
+    @GET("data/2.5/weather")
     fun getCurrentWeather(
         @Query("q") location: String,
         @Query("lang") languageCode: String = "en",
@@ -59,11 +60,12 @@ interface ApixuWeatherApiService {
                 return@Interceptor chain.proceed(request)
             }
 
-
+            val logging = HttpLoggingInterceptor()
+            logging.level = HttpLoggingInterceptor.Level.BASIC
 
             val okHttpClient = OkHttpClient.Builder()
                 .addInterceptor(requestInterceptor)
-//                .addInterceptor(logging)
+                .addInterceptor(logging)
                 .addInterceptor(connectivityInterceptor)
                 .build()
 
