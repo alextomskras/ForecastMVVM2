@@ -16,7 +16,7 @@ data class CurrentWeatherEntity(
     @Embedded(prefix = "coord_")
     val coord: Coord,
     @Embedded(prefix = "weather_")
-    val weather: List<Weather>,
+    val weather: Weather,
     val base: String, // stations
     @Embedded(prefix = "main_")
     val main: Main,
