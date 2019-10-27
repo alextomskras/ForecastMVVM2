@@ -22,23 +22,37 @@ data class CurrentWeatherEntity(
     @Embedded(prefix = "main_")
     val main: Main,
     @SerializedName("visibility")
-    val visibility: Int, // 10000
+    val visibility: Double, // 10000
     @Embedded(prefix = "wind_")
     val wind: Wind,
     @Embedded(prefix = "clouds_")
     val clouds: Clouds,
     @SerializedName("dt")
-    val dt: Int, // 1485790200
+    val dt: Double, // 1485790200
     @Embedded(prefix = "sys_")
     val sys: Sys,
-    @SerializedName("cid")
-//    @PrimaryKey
-    val cid: Int, // 2172797
+//    @SerializedName("id")
+////    @PrimaryKey
+//    val cid: Int, // 2172797
     @SerializedName("name")
     val name: String, // Cairns
     @SerializedName("cod")
-    val cod: Int // 200
+    val cod: Double // 200
 ) {
     @PrimaryKey(autoGenerate = false)
     var id: Int = CURRENT_ENTITY_WEATHER_ID
 }
+
+//class Book : SugarRecord() {
+//    private val id: Long = 0
+//    internal var name: String? = null
+//    internal var ISBN: String? = null
+//    internal var title: String? = null
+//    internal var shortSummary: String? = null
+//
+//    internal var author: Author? = null
+//
+//    fun getId(): Long? {
+//        return id
+//    }
+//}
