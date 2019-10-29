@@ -1,6 +1,7 @@
 package com.example.forecastmvvm.data.db.entity.Current
 
 
+import androidx.room.ColumnInfo
 import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
@@ -8,9 +9,9 @@ import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
 
-const val CURRENT_ENTITY_WEATHER_ID = 0
+const val CURRENT_ENTITY_WEATHER_ID = 1
 
-@Entity(tableName = "Current_Entity_weather")
+@Entity(tableName = "current_entity_weather")
 
 data class CurrentWeatherEntity(
     @Embedded(prefix = "coord_")
@@ -33,7 +34,7 @@ data class CurrentWeatherEntity(
     val cod: Int // 200
 ) {
     @PrimaryKey(autoGenerate = false)
-    var id: Int = CURRENT_ENTITY_WEATHER_ID
+    var id: Int? = CURRENT_ENTITY_WEATHER_ID
 }
 
 
@@ -43,6 +44,9 @@ data class CurrentWeatherEntity(
     )
 
     data class Weather(
+//   @Embedded(prefix = "wid_")
+//        val id: Int, // 802
+        @ColumnInfo(name = "w_id")
         val id: Int, // 802
         val main: String, // Clouds
         val description: String, // scattered clouds
@@ -70,6 +74,8 @@ data class CurrentWeatherEntity(
 
     data class Sys(
         val type: Int, // 1
+//        @Embedded(prefix = "syt_")
+        @ColumnInfo(name = "s_id")
         val id: Int, // 8166
         val message: Double, // 0.2064
         val country: String, // AU
