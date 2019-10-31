@@ -15,17 +15,25 @@ const val CURRENT_ENTITY_WEATHER_ID = 0
 data class CurrentWeatherEntity(
 
 //    val id : Int,
-//    @SerializedName("coord")
-//    @Embedded(prefix = "crd_")
-//    val coord: Coord,
+    @field:SerializedName("coord")
+    @Embedded(prefix = "crd_")
+    val coord: Coord?,
+    @field:SerializedName("base")
+    val base: String?, // stations
 //    @Embedded(prefix = "weather_")
 //    val weather: Array<Weather>,
 //    val base: String, // stations
+    @SerializedName("cod")
+    val cod: Int, // 200
+    @SerializedName("dt")
+    val dt: Int, // 1572544648
+    @SerializedName("name")
+    val name: String?, // Moscow
     @Embedded(prefix = "main_")
     @SerializedName("main")
     val main: Main,
-//    @SerializedName("visibility")
-//    val visibility: Int, // 10000
+    @SerializedName("visibility")
+    val visibility: Int, // 10000
     @Embedded(prefix = "wind_")
     @SerializedName("wind")
     val wind: Wind? = null,

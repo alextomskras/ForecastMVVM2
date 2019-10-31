@@ -6,20 +6,20 @@ import com.example.forecastmvvm.data.db.entity.current.*
 import com.google.gson.annotations.SerializedName
 
 data class CurrentWeatherResponse(
-    @SerializedName("clouds")
+    @field:SerializedName("clouds")
     val clouds: Clouds,
-    @SerializedName("coord")
+    @field:SerializedName("coord")
     val coord: Coord,
-    @SerializedName("main")
+    @field:SerializedName("main")
     val main: Main,
     @field:SerializedName("visibility")
-    val visibility: Int? = null,
+    val visibility: Int,
     @field:SerializedName("weather")
-    val weather: List<Weather?>? = null,
+    val weather: List<Weather>,
 //    @SerializedName("weather")
 //    val weather: Weather,
     @field:SerializedName("wind")
-    val wind: Wind?,
+    val wind: Wind,
 //    val unit: Units,
     @field:SerializedName("sys")
     val currentWeatherEntity: CurrentWeatherEntity
