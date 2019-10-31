@@ -49,13 +49,15 @@ class CurrentWeatherFragment : ScopedFragment(), KodeinAware {
             updateLocation("Los Angeles")
             updateDateToToday()
             updateTemperatures(it.temperature, it.feelsLikeTemperature)
-            updateCondition(it.conditionText)
+
+            updateCondition("ddsdsdsdsd")
+//            updateCondition(it.conditionText)
             updatePrecipitation(it.precipitationVolume)
             updateWind(it.windDirection, it.windSpeed)
             updateVisibility(it.visibilityDistance)
 
             GlideApp.with(this@CurrentWeatherFragment)
-                .load("http:${it.conditionIconUrl}")
+                .load("http:\\ddsdsdsdsd")
 //                .load("http:${it.conditionIconUrl}")
                 .into(imageView_condition_icon)
         })

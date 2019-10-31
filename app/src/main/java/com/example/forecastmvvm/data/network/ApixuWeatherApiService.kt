@@ -45,19 +45,19 @@ interface ApixuWeatherApiService {
         ): ApixuWeatherApiService {
 //            val logging = HttpLoggingInterceptor()
 //            logging.level = HttpLoggingInterceptor.Level.BASIC
-            val requestInterceptor = Interceptor {
+            val requestInterceptor = Interceptor { chain ->
 
-                val url = it.request()
+                val url = chain.request()
                     .url
                     .newBuilder()
                     .addQueryParameter("appid", API_KEY)
                     .build()
-                val request = it.request()
+                val request = chain.request()
                     .newBuilder()
                     .url(url)
                     .build()
 
-                return@Interceptor it.proceed(request)
+                return@Interceptor chain.proceed(request)
             }
 
             val logging = HttpLoggingInterceptor()
