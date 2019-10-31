@@ -31,11 +31,11 @@ data class CurrentWeatherEntity(
     val wind: Wind? = null,
     @field:SerializedName("clouds")
     @Embedded(prefix = "clouds_")
-    val clouds: Clouds = Clouds(0),
+    val clouds: Clouds,
 //    val dt: Double, // 1485790200
     @field:SerializedName("sys")
     @Embedded(prefix = "sys_")
-    val sys: Sys? = null
+    val sys: Sys
 
 //    @PrimaryKey(autoGenerate = false)
 //    val id: Int, // 2172797
