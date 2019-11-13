@@ -1,17 +1,27 @@
 package com.example.forecastmvvm.data.db.entity.current
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+import androidx.room.TypeConverters
 import com.google.gson.annotations.SerializedName
 
+const val OPEN_CURRENT_ENTITY_WEATHER_ID = 0
+
+@Entity(tableName = "open_current_entity_weather")
+@TypeConverters(ListStringConverter::class)
 data class Weather(
-    @field:SerializedName("id")
-    val id: Int, // 802
+//    @SerializedName("id")
+//    val id: Int, // 802
 
 //    @ColumnInfo(name = "w_id")
 //    val id: Int, // 802
-    @field:SerializedName("main")
+    @SerializedName("main")
     val main: String, // Clouds
-    @field:SerializedName("description")
+    @SerializedName("description")
     val description: String, // scattered clouds
-    @field:SerializedName("icon")
+    @SerializedName("icon")
     val icon: String // 03n
-)
+) {
+    @PrimaryKey(autoGenerate = false)
+    var id: Int? = OPEN_CURRENT_ENTITY_WEATHER_ID
+}

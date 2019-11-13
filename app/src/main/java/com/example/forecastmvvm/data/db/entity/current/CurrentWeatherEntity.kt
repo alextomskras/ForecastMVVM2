@@ -2,7 +2,7 @@ package com.example.forecastmvvm.data.db.entity.current
 
 
 import androidx.room.*
-import com.example.forecastmvvm.data.db.entity.forecast.Wind
+
 import com.google.gson.Gson
 import com.google.gson.annotations.SerializedName
 import com.google.gson.reflect.TypeToken
@@ -11,7 +11,7 @@ import com.google.gson.reflect.TypeToken
 const val CURRENT_ENTITY_WEATHER_ID = 0
 
 @Entity(tableName = "current_entity_weather")
-@TypeConverters(GenreConverter::class)
+@TypeConverters(ListStringConverter::class)
 data class CurrentWeatherEntity(
 
 //    val id : Int,
@@ -21,8 +21,9 @@ data class CurrentWeatherEntity(
     @field:SerializedName("base")
     val base: String?, // stations
 //    @Embedded(prefix = "weather_")
-    val weather: List<String>,
-//    val base: String, // stations
+    @SerializedName("weather")
+    val weather: List<String>?,
+////    val base: String, // stations
     @SerializedName("cod")
     val cod: Int, // 200
     @SerializedName("dt")
@@ -79,6 +80,23 @@ class Converters {
         val gson = Gson()
         return gson.toJson(list)
     }
+}
+
+class ListStringConverter {
+
+    @TypeConverter
+    fun fromString(value: String): List<String> {
+        val listType = object : TypeToken<List<String>>() {}.type
+        return Gson().fromJson(value, listType)
+
+    }
+
+    @TypeConverter
+    fun fromListLisr(list: List<String>): String {
+        val gson = Gson()
+        return gson.toJson(list)
+    }
+
 }
 
 
