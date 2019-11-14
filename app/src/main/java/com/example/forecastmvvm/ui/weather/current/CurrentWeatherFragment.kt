@@ -42,26 +42,29 @@ class CurrentWeatherFragment : ScopedFragment(), KodeinAware {
     private fun bindUI() = launch {
         val currentWeather = viewModel.weather.await()
 
+//        val weatherLocation = viewModel.weatherLocation.await()
+        val weatherLocation = "Moscow"
+//
+//        weatherLocation.observe(this@CurrentWeatherFragment, Observer { location ->
+//            if (location == null) return@Observer
+//            updateLocation(location.name)
+//        })
+
         currentWeather.observe(this@CurrentWeatherFragment, Observer {
             if (it == null) return@Observer
 
 //            group_loading.visibility = View.GONE
-            updateLocation("Los Angeles")
             updateDateToToday()
-            updateTemperatures(33.1, 34.2)
-//            updateTemperatures(it.temperature, it.feelsLikeTemperature)
-
-            updateCondition("ddsdsdsdsd")
-//            updateCondition(it.conditionText)
-            updatePrecipitation(44.2)
-            updateWind("SSE", 35.2)
-//            updateWind(it.windDirection, 55.2)
-            updateVisibility(33.1)
+            updateTemperatures(it.temperature, 11.2)
+            updateCondition("it.conditionText")
+            updatePrecipitation(it.precipitationVolume)
+            updateWind(it.windDirection, it.windSpeed)
 //            updateVisibility(it.visibilityDistance)
-//
+            updateVisibility(33.5)
+
             GlideApp.with(this@CurrentWeatherFragment)
-                .load("http://openweathermap.org/img/wn/01d@2x.png")
 //                .load("http:${it.conditionIconUrl}")
+                .load("http://openweathermap.org/img/wn/10d@2x.png")
                 .into(imageView_condition_icon)
         })
     }
@@ -71,7 +74,6 @@ class CurrentWeatherFragment : ScopedFragment(), KodeinAware {
     }
 
     private fun updateLocation(location: String) {
-//        (activity as? AppCompatActivity)?.supportActionBar?.title = location
         (activity as? AppCompatActivity)?.supportActionBar?.title = location
     }
 
@@ -79,29 +81,29 @@ class CurrentWeatherFragment : ScopedFragment(), KodeinAware {
         (activity as? AppCompatActivity)?.supportActionBar?.subtitle = "Today"
     }
 
-    private fun updateTemperatures(temperature: Double, feelsLike: Double) {
+    private fun updateTemperatures(temperature: Int, feelsLike: Double) {
         val unitAbbreviation = chooseLocalizedUnitAbbreviation("°C", "°F")
-        textView_temperature.text = "77$unitAbbreviation"
-        textView_feels_like_temperature.text = "Feels like 66$unitAbbreviation"
+        textView_temperature.text = "$temperature$unitAbbreviation"
+        textView_feels_like_temperature.text = "Feels like $feelsLike$unitAbbreviation"
     }
 
     private fun updateCondition(condition: String) {
-        textView_condition.text = "condition"
+        textView_condition.text = condition
     }
 
-    private fun updatePrecipitation(precipitationVolume: Double) {
+    private fun updatePrecipitation(precipitationVolume: String) {
         val unitAbbreviation = chooseLocalizedUnitAbbreviation("mm", "in")
-        textView_precipitation.text = "Preciptiation: uiii $unitAbbreviation"
+        textView_precipitation.text = "Preciptiation: $precipitationVolume $unitAbbreviation"
     }
 
-    private fun updateWind(windDirection: String, windSpeed: Double) {
+    private fun updateWind(windDirection: String, windSpeed: String) {
         val unitAbbreviation = chooseLocalizedUnitAbbreviation("kph", "mph")
-        textView_wind.text = "Wind: SSE 54 $unitAbbreviation"
+        textView_wind.text = "Wind: $windDirection, $windSpeed $unitAbbreviation"
     }
 
     private fun updateVisibility(visibilityDistance: Double) {
         val unitAbbreviation = chooseLocalizedUnitAbbreviation("km", "mi.")
-        textView_visibility.text = "Visibility: 11 $unitAbbreviation"
+        textView_visibility.text = "Visibility: $visibilityDistance $unitAbbreviation"
     }
 
 }
