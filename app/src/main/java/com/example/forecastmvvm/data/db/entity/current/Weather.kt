@@ -8,7 +8,9 @@ import com.google.gson.annotations.SerializedName
 const val OPEN_CURRENT_ENTITY_WEATHER_ID = 0
 
 @Entity(tableName = "open_current_entity_weather")
+
 @TypeConverters(ListStringConverter::class)
+
 data class Weather(
 //    @SerializedName("id")
 //    val id: Int, // 802
@@ -16,6 +18,7 @@ data class Weather(
 //    @ColumnInfo(name = "w_id")
 //    val id: Int, // 802
     @SerializedName("main")
+//    val main: List<String>, // Clouds
     val main: String, // Clouds
     @SerializedName("description")
     val description: String, // scattered clouds

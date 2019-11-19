@@ -44,21 +44,22 @@ class CurrentWeatherFragment : ScopedFragment(), KodeinAware {
 
 //        val weatherLocation = viewModel.weatherLocation.await()
         val weatherLocation = "Moscow"
-//
+
 //        weatherLocation.observe(this@CurrentWeatherFragment, Observer { location ->
 //            if (location == null) return@Observer
-//            updateLocation(location.name)
+        updateLocation("Moscow1")
 //        })
 
         currentWeather.observe(this@CurrentWeatherFragment, Observer {
-            if (it == null) return@Observer
+            //            if (it == null) return@Observer
 
 //            group_loading.visibility = View.GONE
             updateDateToToday()
-            updateTemperatures(it.temperature, 11.2)
+            updateTemperatures("sss", 11.2)
+//            updateTemperatures(it.temperature, 11.2)
             updateCondition("it.conditionText")
-            updatePrecipitation(it.precipitationVolume)
-            updateWind(it.windDirection, it.windSpeed)
+//            updatePrecipitation(it.precipitationVolume)
+//            updateWind(it.windDirection, it.windSpeed)
 //            updateVisibility(it.visibilityDistance)
             updateVisibility(33.5)
 
@@ -74,14 +75,15 @@ class CurrentWeatherFragment : ScopedFragment(), KodeinAware {
     }
 
     private fun updateLocation(location: String) {
-        (activity as? AppCompatActivity)?.supportActionBar?.title = location
+        (activity as? AppCompatActivity)?.supportActionBar?.title = "MOSKOW1"
+//        (activity as? AppCompatActivity)?.supportActionBar?.title = location
     }
 
     private fun updateDateToToday() {
         (activity as? AppCompatActivity)?.supportActionBar?.subtitle = "Today"
     }
 
-    private fun updateTemperatures(temperature: Int, feelsLike: Double) {
+    private fun updateTemperatures(temperature: String, feelsLike: Double) {
         val unitAbbreviation = chooseLocalizedUnitAbbreviation("°C", "°F")
         textView_temperature.text = "$temperature$unitAbbreviation"
         textView_feels_like_temperature.text = "Feels like $feelsLike$unitAbbreviation"

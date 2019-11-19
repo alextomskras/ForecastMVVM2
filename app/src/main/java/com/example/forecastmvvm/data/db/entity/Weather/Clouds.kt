@@ -1,9 +1,9 @@
-package com.example.forecastmvvm.data.db.entity.current.back
+package com.example.forecastmvvm.data.db.entity.Weather
 
 
 import com.google.gson.annotations.SerializedName
 
 data class Clouds(
     @SerializedName("all")
-    val all: Int // 75
+    val all: Int // 1
 )

@@ -30,6 +30,7 @@ const val API_KEY = "f9d142fda1995a149d1b35f11bc9a928"
 //http://api.apixu.com/v1/current.json?key=e3b4ae74af25401a849181235180512&q=London&lang=en
 
 //157e309f67a840baa3f0cf1f96bb1a04 	Master API Key
+//157e309f67a840baa3f0cf1f96bb1a04
 //https://api.weatherbit.io/v2.0/forecast/daily?city_id=moscow&days=7&units=S&key=157e309f67a840baa3f0cf1f96bb1a04
 
 

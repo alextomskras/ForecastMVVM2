@@ -1,4 +1,4 @@
-package com.example.forecastmvvm.data.db.entity.current.back
+package com.example.forecastmvvm.data.db.entity.back
 
 
 import com.google.gson.annotations.SerializedName

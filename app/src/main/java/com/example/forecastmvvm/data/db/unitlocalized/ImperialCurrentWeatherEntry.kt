@@ -4,18 +4,18 @@ import androidx.room.ColumnInfo
 
 
 data class ImperialCurrentWeatherEntry(
-    @ColumnInfo(name = "id")
-    override val temperature: Int,
+    @ColumnInfo(name = "main")
+    override val temperature: String
 //    @ColumnInfo(name = "weather_description")
 //    override val conditionText: String,
 //    @ColumnInfo(name = "weather_icon")
 //    override val conditionIconUrl: String = "openweathermap.org/img/wn/01d@2x.png",
-    @ColumnInfo(name = "main")
-    override val windSpeed: String,
-    @ColumnInfo(name = "description")
-    override val windDirection: String,
-    @ColumnInfo(name = "icon")
-    override val precipitationVolume: String
+//    @ColumnInfo(name = "main")
+//    override val windSpeed: String,
+//    @ColumnInfo(name = "description")
+//    override val windDirection: String,
+//    @ColumnInfo(name = "icon")
+//    override val precipitationVolume: String
 //    @ColumnInfo(name = "main_tempMax")
 //    override val feelsLikeTemperature: Double,
 //    @ColumnInfo(name = "main_humidity")

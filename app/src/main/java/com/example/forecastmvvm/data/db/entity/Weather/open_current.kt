@@ -1,17 +1,13 @@
-package com.example.forecastmvvm.data.network.response
+package com.example.forecastmvvm.data.db.entity.Weather
 
 
-
-import com.example.forecastmvvm.data.db.entity.current.*
 import com.google.gson.annotations.SerializedName
 
-data class CurrentWeatherResponse(
-
+data class open_current(
     @SerializedName("coord")
     val coord: Coord,
     @SerializedName("weather")
-//    val weather: List<Weather>,
-    val weather: Weather,
+    val weather: List<Weather>,
     @SerializedName("base")
     val base: String, // stations
     @SerializedName("main")

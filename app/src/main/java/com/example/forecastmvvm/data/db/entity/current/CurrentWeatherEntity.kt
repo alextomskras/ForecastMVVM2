@@ -21,7 +21,7 @@ data class CurrentWeatherEntity(
     @field:SerializedName("base")
     val base: String?, // stations
 //    @Embedded(prefix = "weather_")
-    @SerializedName("weather")
+//    @SerializedName("weather")
     val weather: List<String>?,
 ////    val base: String, // stations
     @SerializedName("cod")
